@@ -23,11 +23,10 @@ public class Ticket {
     public  void getTicket(String name) throws InterruptedException {       
     	semaphore.acquire(); //P操作
         if (ticketNum >= 1) {
+        	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         	System.out.println("--------------------------------------");
-        	System.out.println(time+"--"+start+" 开往 "+end+" G6666班车");
-            System.out.println(name + " 买票成功，号码=" + ticketNum);
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-            System.out.println("购票时间"+df.format(new Date()));
+        	System.out.println(time+"--"+start+" 开往 "+end+"的班车");
+            System.out.println(name + " 买票成功，号码=" + ticketNum+" 购票时间"+df.format(new Date()));
             this.subTicketNum();
             System.out.println("当前还有 "+semaphore.getQueueLength()+"人在等待买票 ");
            // System.out.println("--------------------------------------");
