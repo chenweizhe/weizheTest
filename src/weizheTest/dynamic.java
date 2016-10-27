@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 还没完成还在思考 因为还有些不理解
  * 动态规划
  * 根据可能发生的可能情况 设计以下算法 写的比较垃圾
  * 因为判断出非法字符后，还需要把字符串变成合法
@@ -25,7 +26,7 @@ public class dynamic {
 	public static void main(String[] args) {
 		
 		List<String> list = new ArrayList<String>();
-		String a[] = {"(","(",")"};
+		String a[] = {"(","]"};
 		for(int i=0;i<a.length;i++){
 			list.add(a[i]);
 		}
@@ -64,9 +65,16 @@ public class dynamic {
 					}
 				}
 					
-				if((a[e]==")"&&a[s]!="(") || (a[e]=="]"&&a[s]!="["))
+				if((a[e]==")"&&a[s]!="(") || (a[e]=="]"&&a[s]!="[")){
 					dp[s][e] = min(dp[s][e], dp[s+1][e]+1);
-				
+					if (status) {
+						if(a[e] == ")")
+						    list.add(0, "(");
+						if(a[e] == "]")
+							list.add(0, "[");
+					}
+				}
+					
 				for(int k=s;k<e;k++){
 					dp[s][e] = min(dp[s][e],dp[s][k]+dp[k+1][e]);
 				}		
@@ -74,7 +82,7 @@ public class dynamic {
 		}
 		
 		for (int i = 0; i < list.size(); i++) {
-			System.out.print(list.get(i)+" ");
+			System.out.print(list.get(i)+",");
 		}
 		System.out.println();
 		System.out.println(dp[0][l-1]);
