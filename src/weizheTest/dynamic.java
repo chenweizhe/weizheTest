@@ -16,78 +16,62 @@ public class dynamic {
 	
 	public static boolean status = true;
 	public static int min(int a,int b) {
-		if(a>b)
-			status = true;
-		else
-			status = false;
 		return a>b?b:a;
 	}
 	
 	public static void main(String[] args) {
 		
-		List<String> list = new ArrayList<String>();
-		String a[] = {"(","]"};
-		for(int i=0;i<a.length;i++){
-			list.add(a[i]);
-		}
-			
+		
+		String a[] = {")","(","["};
+				
 		
 		int l = a.length;
+		
 		int[][] dp = new int[l][l];
+		
 		for(int i=0;i<l;i++){
 			dp[i][i] = 1;
-			if(l == 1){
-				if(a[i] == "(")
-					list.add(")");
-				if(a[i] == "[")
-					list.add("]");
-				if(a[i] == ")")
-					list.add(0, "(");
-				if(a[i] == "]")
-					list.add(0, "[");
-			}
 		}
+		
+		for(int i=1;i<l;i++){
+			dp[i][i-1] =0;
+		}
+		
 		for(int len=2; len<=l ; len++){
 			for(int s=0; s<=l-len;s++){
 				int e = s+len-1;
 				dp[s][e] = 99999999;
 				
-				if((a[s]=="("&&a[e]==")")||(a[s]=="["&&a[e]=="]"))
+				if((a[s]=="("&&a[e]==")")||(a[s]=="["&&a[e]=="]")){
 					dp[s][e] = min(dp[s][e], dp[s+1][e-1]);
+					System.out.println(dp[s][e]+"-----"+dp[s+1][e-1]);
+				}
 				
 				if((a[s]=="("&&a[e]!=")") || (a[s]=="["&&a[e] != "]")){
+					System.out.println(dp[s][e]+"-----"+dp[s][e-1]);
 					dp[s][e] = min(dp[s][e], dp[s][e-1]+1);
-					if (status) {
-						if(a[s] == "(")
-						    list.add(e+1, ")");
-						if(a[s] == "[")
-							list.add(e+1, "]");
-					}
+					System.out.println(dp[s][e]+"-----"+dp[s][e-1]);
 				}
 					
 				if((a[e]==")"&&a[s]!="(") || (a[e]=="]"&&a[s]!="[")){
 					dp[s][e] = min(dp[s][e], dp[s+1][e]+1);
-					if (status) {
-						if(a[e] == ")")
-						    list.add(0, "(");
-						if(a[e] == "]")
-							list.add(0, "[");
-					}
 				}
 					
 				for(int k=s;k<e;k++){
+					System.out.println(dp[s][e]+"---------"+dp[s][k]+"--------"+dp[k+1][e]);
 					dp[s][e] = min(dp[s][e],dp[s][k]+dp[k+1][e]);
 				}		
 			}
 		}
-		
-		for (int i = 0; i < list.size(); i++) {
-			System.out.print(list.get(i)+",");
-		}
+
 		System.out.println();
 		System.out.println(dp[0][l-1]);
-		
-		
+		for(int i=0; i<l; i++){
+			for (int j = 0; j < l; j++) {
+				System.out.print(dp[i][j]);
+			}
+			System.out.println();
+		}
 	}
 
 }
