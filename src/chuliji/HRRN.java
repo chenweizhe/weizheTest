@@ -47,8 +47,8 @@ public class HRRN {
 				proessQueue.addFirst(tempProcess);
 			}
 			
-			System.out.println("进程："+process.getId()+"  响应比："+process.getPriority()+" 到达时间："+
-			process.getArrviteTime()+" 所需时间："+process.getNeedTime()+" 开始时间："+currentTime+"---");
+			System.out.print("进程："+process.getId()+"  响应比："+process.getPriority()+" 到达时间："+
+			process.getArrviteTime()+" 所需时间："+process.getNeedTime()+" 开始时间："+currentTime+" ");
 			
 			currentTime += needTime;
 			System.out.println("结束时间："+currentTime);	

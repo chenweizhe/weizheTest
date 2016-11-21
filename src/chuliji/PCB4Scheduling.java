@@ -18,11 +18,22 @@ public class PCB4Scheduling {
 	private int needTime;
 	
 	public PCB4Scheduling(int id, int arriveTime, int needTime) {
-		super();
 		this.id = id;
 		this.arrviteTime = arriveTime;
 		this.needTime = needTime;
 	}
+	
+	
+
+	public PCB4Scheduling(int id, double priority, int arrviteTime, int needTime) {
+		super();
+		this.id = id;
+		this.priority = priority;
+		this.arrviteTime = arrviteTime;
+		this.needTime = needTime;
+	}
+
+
 
 	public int getId() {
 		return id;

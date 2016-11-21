@@ -30,16 +30,16 @@ public class RR {
 			process = processQueue.pollFirst();
 			needTime = process.getNeedTime();
 			arriveTime = process.getArrviteTime();
-			System.out.println("进程: "+process.getId());
-			System.out.println("到达时间： "+process.getArrviteTime());
-			System.out.println("还所需时间： "+process.getNeedTime());
+			System.out.print(" 进程: "+process.getId());
+			System.out.print(" 到达时间： "+process.getArrviteTime());
+			System.out.print(" 还所需时间： "+process.getNeedTime());
 			if (currentTime < arriveTime) {
 				currentTime = arriveTime;
 			}
-			System.out.println("开始时间"+currentTime);
+			System.out.print(" 开始时间"+currentTime);
 			if (TIME_SLICE < needTime) {
 				currentTime += TIME_SLICE;
-				System.out.println("进程中断时间："+currentTime);
+				System.out.println(" 进程中断时间："+currentTime);
 				process.setNeedTime(needTime - TIME_SLICE);
 				for(int i=0; i<processQueue.size(); i++){
 					if (processQueue.get(i).getArrviteTime() > currentTime) {
