@@ -1,8 +1,11 @@
 package weizheTest;
 
+import java.util.Scanner;
 
 public class fullArrayTs {
 	
+	private static Scanner scanner;
+
 	public static void Prem(int n){
 		int a[] = new int[n];
 		boolean dir[] = new boolean[n];
@@ -12,7 +15,7 @@ public class fullArrayTs {
 			dir[i] = false; //flase为左，true为右
 		}
 		do {
-			print2(a,dir,n);
+			print(a,dir,n);
 			if(n == a[n-1]){
 				for(int i = n-1; i>0 ; i--){
 					int temp = a[i]; 
@@ -23,7 +26,7 @@ public class fullArrayTs {
 					dir[i] = dir[i-1]; 
 					dir[i-1] = flag;
 					
-					print2(a,dir, n);
+					print(a,dir, n);
 				}
 			}else {
 				for(int i=1;i<n;i++){
@@ -34,7 +37,7 @@ public class fullArrayTs {
 					boolean flag = dir[i];
 					dir[i] = dir[i-1]; 
 					dir[i-1] = flag;
-					print2(a, dir, n);
+					print(a, dir, n);
 				}
 			}
 		} while (MaxMove(a,dir,n));
@@ -72,16 +75,14 @@ public class fullArrayTs {
 			   dir[pos] = dir[pos-1]; 
 			   dir[pos-1] = flag;
 		}
-		
 		for (int i = 0; i < n; i++) {
 			 if (a[i] > max)
 				 dir[i] = !dir[i];
 		}
-		
 		return true;
 	}
 
-	public static void print2(int a[],boolean dir[],int n){
+	public static void print(int a[],boolean dir[],int n){
 		for (int i = 0; i < n; i++) {
 			if (dir[i] == false)
 				System.out.print("<—"+" ");
@@ -93,7 +94,9 @@ public class fullArrayTs {
 	}
 	
 	public static void main(String[] args) {
-		int n = 4;
+		System.out.println("请输入数字： ");
+		scanner = new Scanner(System.in);
+		int n = scanner.nextInt();
 		Prem(n);
 	}
 	

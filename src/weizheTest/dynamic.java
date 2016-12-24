@@ -1,28 +1,25 @@
 package weizheTest;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 /**
- * 还没完成还在思考 因为还有些不理解
  * 动态规划
  * 根据可能发生的可能情况 设计以下算法 写的比较垃圾
- * 因为判断出非法字符后，还需要把字符串变成合法
- * 所以这里用到的数据结构是顺序表，由于当初的数据结构代码不知道扔哪里 所以用到是java提供的包
  * @author javazhe
  *
  */
 public class dynamic {
 	
 	public static boolean status = true;
+	private static Scanner scanner;
 	public static int min(int a,int b) {
 		return a>b?b:a;
 	}
 	
 	public static void main(String[] args) {
-		
-		
-		String a[] = {")","(","["};
+		System.out.println("请输入合法的括号：");
+		scanner = new Scanner(System.in);
+		String a[] = {scanner.next(),scanner.next(),scanner.next()};
 				
 		
 		int l = a.length;
@@ -44,13 +41,12 @@ public class dynamic {
 				
 				if((a[s]=="("&&a[e]==")")||(a[s]=="["&&a[e]=="]")){
 					dp[s][e] = min(dp[s][e], dp[s+1][e-1]);
-					System.out.println(dp[s][e]+"-----"+dp[s+1][e-1]);
 				}
 				
 				if((a[s]=="("&&a[e]!=")") || (a[s]=="["&&a[e] != "]")){
-					System.out.println(dp[s][e]+"-----"+dp[s][e-1]);
+					
 					dp[s][e] = min(dp[s][e], dp[s][e-1]+1);
-					System.out.println(dp[s][e]+"-----"+dp[s][e-1]);
+//					System.out.println(dp[s][e]+"-----"+dp[s][e-1]);
 				}
 					
 				if((a[e]==")"&&a[s]!="(") || (a[e]=="]"&&a[s]!="[")){
@@ -58,14 +54,14 @@ public class dynamic {
 				}
 					
 				for(int k=s;k<e;k++){
-					System.out.println(dp[s][e]+"---------"+dp[s][k]+"--------"+dp[k+1][e]);
+//					System.out.println(dp[s][e]+"---------"+dp[s][k]+"--------"+dp[k+1][e]);
 					dp[s][e] = min(dp[s][e],dp[s][k]+dp[k+1][e]);
 				}		
 			}
 		}
 
 		System.out.println();
-		System.out.println(dp[0][l-1]);
+		System.out.println("最少添加括号数为：   "+dp[0][l-1]);
 		for(int i=0; i<l; i++){
 			for (int j = 0; j < l; j++) {
 				System.out.print(dp[i][j]);
