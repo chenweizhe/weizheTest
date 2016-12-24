@@ -11,7 +11,7 @@ public class BankerTest {
 		String C;
 		in = new Scanner(System.in);
 		BankerClass T = new BankerClass();
-		System.out.println("这是一个三个进程，初始系统可用三类资源为{10,8,7}的银行家算法：");
+		System.out.println("这是一个三个进程，初始系统可用三类资源的银行家算法：");
 		T.setSystemVariable();
 		while (choose == true) {
 			T.setRequest();

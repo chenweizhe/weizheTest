@@ -3,7 +3,7 @@ package BankerAlgorithm;
 import java.util.Scanner;
 
 public class BankerClass {
-	int[] Available = {10,8,7};
+	int[] Available = {15,12,10};
     int[][] Max = new int[3][3];
     int[][] Alloction = new int[3][3];
     int[][] Need = new int[3][3];
@@ -95,8 +95,8 @@ public class BankerClass {
 				flag = false;
 			}
 			for(int i=0; i<3; i++){
-				//panduan
-				if(Finish[i] == false && Need[i][0] <= Work[1] && Need[i][2] <= Work[2]){
+				
+				if(Finish[i] == false && Need[i][0] <= Work[0]&& Need[i][1] <= Work[1] && Need[i][2] <= Work[2]){
 					System.out.println("P"+i+" ");
 					for(int k=0; k<3; k++){
 						System.out.print(Work[k]+" ");
@@ -149,7 +149,7 @@ public class BankerClass {
 		System.out.println("此时资源分配量如下：");
 		System.out.println("进程 "+" Max "+" Alloction "+" Need "+"   Available");
 		for(int i=0; i<3; i++){
-			System.out.println("P"+i+"  ");
+			System.out.print("P"+i+"  ");
 			for(int j=0; j<3; j++){
 				System.out.print(Max[i][j]+"  ");
 			}
@@ -166,7 +166,7 @@ public class BankerClass {
 			System.out.print("|  ");
 			if(i == 0){
 				for(int j=0; j<3; j++){
-					System.out.println(Available[j]+"  ");
+					System.out.print(Available[j]+"  ");
 				}
 			}
 			System.out.println();
