@@ -37,11 +37,11 @@ public class PSA {
 				if(tempProcess.getPriority() < process.getPriority()){
 					if(tempProcess.getArrviteTime() != currentTime){
 						processQueue.remove(i);
-						System.out.println("进程："+process.getId()+" 优先级："+(int)process.getPriority()+" 到达时间："+ process.getArrviteTime()+" 需要时间："+process.getNeedTime()+" 开始时间："+currentTime);
+						System.out.print("进程："+process.getId()+" 优先级："+(int)process.getPriority()+" 到达时间："+ process.getArrviteTime()+" 需要时间："+process.getNeedTime()+" 开始时间："+currentTime);
 						runTime = tempProcess.getArrviteTime() - currentTime;
 						process.setNeedTime(needTime-runTime);
 						currentTime += runTime;
-						System.out.println("进程中断时间："+currentTime);
+						System.out.println(" 进程中断时间："+currentTime);
 						processQueue.addFirst(process);
 						process = tempProcess;
 					}else{

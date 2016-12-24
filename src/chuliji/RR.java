@@ -12,6 +12,7 @@ import java.util.LinkedList;
 public class RR {
 	private LinkedList<PCB4Scheduling> processQueue;
 	
+	//时间片
 	private static final int TIME_SLICE = 5;
 	
 	public RR() {
@@ -36,7 +37,7 @@ public class RR {
 			if (currentTime < arriveTime) {
 				currentTime = arriveTime;
 			}
-			System.out.print(" 开始时间"+currentTime);
+			System.out.print(" 开始时间: "+currentTime);
 			if (TIME_SLICE < needTime) {
 				currentTime += TIME_SLICE;
 				System.out.println(" 进程中断时间："+currentTime);
@@ -53,7 +54,7 @@ public class RR {
 				
 			}else {
 				currentTime += needTime;
-				System.out.println("结束时间："+currentTime);
+				System.out.println(" 结束时间："+currentTime);
 			}
 			
 		}
@@ -64,7 +65,7 @@ public class RR {
 	}
 
 	private <T> void sortByArrayTime(LinkedList<PCB4Scheduling> processQueue) {
-		Collections.sort(processQueue,new queueComparator());
+		Collections.sort(processQueue,new queueComparator());	
 	}
 	
 	

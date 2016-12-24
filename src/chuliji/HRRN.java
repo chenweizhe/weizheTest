@@ -41,7 +41,7 @@ public class HRRN {
 					maxPriority = respRatio;
 				}
 			}
-			//讲相应比高的放在对头
+			//响应比高的放在队头
 			if(maxIndex != -1){
 				tempProcess = proessQueue.remove(maxIndex);
 				proessQueue.addFirst(tempProcess);
