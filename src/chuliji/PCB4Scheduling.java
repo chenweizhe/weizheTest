@@ -23,8 +23,6 @@ public class PCB4Scheduling {
 		this.needTime = needTime;
 	}
 	
-	
-
 	public PCB4Scheduling(int id, double priority, int arrviteTime, int needTime) {
 		super();
 		this.id = id;

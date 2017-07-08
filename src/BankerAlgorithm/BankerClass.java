@@ -97,7 +97,7 @@ public class BankerClass {
 			for(int i=0; i<3; i++){
 				
 				if(Finish[i] == false && Need[i][0] <= Work[0]&& Need[i][1] <= Work[1] && Need[i][2] <= Work[2]){
-					System.out.println("P"+i+" ");
+					System.out.print("P"+i+" ");
 					for(int k=0; k<3; k++){
 						System.out.print(Work[k]+" ");
 					}
@@ -197,8 +197,4 @@ public class BankerClass {
 			}
 		}
 	}
-    
-
-    
-    
 }

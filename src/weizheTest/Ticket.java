@@ -18,7 +18,6 @@ public class Ticket {
         this.start = start;
         this.end = end;
     }
-
     // 取票，票数减一
     public  void getTicket(String name) throws InterruptedException {       
     	semaphore.acquire(); //P操作
@@ -35,8 +34,7 @@ public class Ticket {
             System.out.println("票已经售完 " + name + " 没有买到票");
             System.out.println("--------------------------------------");
         }
-        semaphore.release(); //V操作
-       
+        semaphore.release(); //V操作 
     }
 
     public void subTicketNum() {

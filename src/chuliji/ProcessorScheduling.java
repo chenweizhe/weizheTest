@@ -13,6 +13,7 @@ public class ProcessorScheduling {
 	private static Scanner scanner;
 	
 	public static void main(String[] args) {
+		System.out.println("请输入选择的处理机调度算法：");
 		scanner = new Scanner(System.in);
 		int choose = scanner.nextInt();
 		switch (choose) {

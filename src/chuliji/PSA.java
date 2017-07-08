@@ -37,7 +37,8 @@ public class PSA {
 				if(tempProcess.getPriority() < process.getPriority()){
 					if(tempProcess.getArrviteTime() != currentTime){
 						processQueue.remove(i);
-						System.out.print("进程："+process.getId()+" 优先级："+(int)process.getPriority()+" 到达时间："+ process.getArrviteTime()+" 需要时间："+process.getNeedTime()+" 开始时间："+currentTime);
+						System.out.print("进程："+process.getId()+" 优先级："+(int)process.getPriority()+" 到达时间："
+						+ process.getArrviteTime()+" 需要时间："+process.getNeedTime()+" 开始时间："+currentTime);
 						runTime = tempProcess.getArrviteTime() - currentTime;
 						process.setNeedTime(needTime-runTime);
 						currentTime += runTime;
@@ -54,9 +55,10 @@ public class PSA {
 				}
 			}
 			
-			System.out.print("进程："+process.getId()+" 优先级："+(int)process.getPriority()+" 到达时间: "+process.getArrviteTime()+" 所需时间："+process.getNeedTime()+" 开始时间："+currentTime+" ");
+			System.out.print("进程："+process.getId()+" 优先级："+(int)process.getPriority()+" 到达时间: "
+			+process.getArrviteTime()+" 所需时间："+process.getNeedTime()+" 开始时间："+currentTime+" ");
 			currentTime += process.getNeedTime();
-			System.out.println("结束时间+ "+currentTime);
+			System.out.println("结束时间: "+currentTime);
 			
 		}
 	}

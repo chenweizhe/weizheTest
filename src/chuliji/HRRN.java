@@ -46,16 +46,12 @@ public class HRRN {
 				tempProcess = proessQueue.remove(maxIndex);
 				proessQueue.addFirst(tempProcess);
 			}
-			
 			System.out.print("进程："+process.getId()+"  响应比："+process.getPriority()+" 到达时间："+
 			process.getArrviteTime()+" 所需时间："+process.getNeedTime()+" 开始时间："+currentTime+" ");
-			
 			currentTime += needTime;
 			System.out.println("结束时间："+currentTime);	
 		}
 	}
-	
-	
 	
 	public void addProcess(int id, int arriveTime, int needTime){
 		PCB4Scheduling process = new PCB4Scheduling(id, arriveTime, needTime);
